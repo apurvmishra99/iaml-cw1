@@ -340,7 +340,7 @@ Summarise the main properties of both the training and test splits.
 
 
 \begin{answerbox}{12em}
-The train dataset has 4800 observations, and the test dataset has 1200 observations. This a traditional $75\%-25\%$ split of the whole dataset to train the model. Each observation is composed of 68 (x, y) pairs of points. Therefore there are 
+The train dataset has 4800 observations, and the test dataset has 1200 observations. This a traditional $75\%-25\%$ split of the whole dataset to train the model. Each observation is composed of 68 (x, y) pairs of points. Therefore, there are $136$ features in each dataset, each of data type \textit{float64}.
 \end{answerbox}
 
 
@@ -360,7 +360,10 @@ Comment on any difference you notice between the two sets of points. \\
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{results/smile-no-smile-mean-scatter.png}
+\end{center}
+The major difference in the above scatter plot is that for the mean smiling points scatter plot we see that the face formed has its mouth open and lips raised compared to the not smiling mean scatter plot. This also leads smiling mean points' plot's chin to be slightly lower.
 \end{answerbox}
 
 
@@ -378,7 +381,7 @@ What is the advantage, if any, of using this measure compared to entropy?
 
 
 \begin{answerbox}{10em}
-Your Answer Here
+We use Gini Index as default measure of purity in sklearn's DecisionTreeClassifier. Generally, using entropy or Gini index in place of each other does not lead to a performance gain. Compared to entropy, the advantage in using Gini is that is computationally less expensive and is easier to calculate.
 \end{answerbox}
 
 
@@ -395,7 +398,7 @@ What impact does smaller or larger values of this parameter have? Give one poten
 
 
 \begin{answerbox}{10em}
-Your Answer Here
+The $max\_depth$ parameter sets how deep the tree can grow and hence how complicated our model will be.Increasing the value of $max\_depth$ means we have a higher training accuracy, however we have to be careful not to overfit on the training data.If the $max\_depth$ is really high we observe our testing accuracy goes down. We need to find a sweet spot in between.For small values we may not have enough distinguishing features to make an accurate model.For large values, the model can become very complicated, and we will overfit on training data.
 \end{answerbox}
 
 
@@ -415,7 +418,18 @@ You can set the maximum depth of the decision tree using the \texttt{max\_depth}
 
 
 \begin{answerbox}{20em}
-Your Answer Here
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Maximum Depth & Training Accuracy & Testing Accuracy \\ \hline
+    2 & 79.479\% & 78.167\% \\
+    8 & 93.354\% & 84.083\% \\
+    20 & 100.0\% & 81.5\% \\
+    \hline
+    \end{tabular}
+\end{center}
+
+The model with $max\_depth=8$ is the best out of the three. It is in the sweet spot between low and high $max\_depth$ values where have the highest test accuracy, and much lower complexity than the model with 20 layers.
 \end{answerbox}
 
 
@@ -433,7 +447,7 @@ Does the one with the highest importance make sense in the context of this class
 
 
 \begin{answerbox}{10em}
-Your Answer Here
+The three most important features (in order) are $x50$, $y48$ and $y29$. All these features can be seen to be distinctly differing a lot in the mean points plot. They correspond to the upper-lip, chin and top of the bridge of the nose. All of which are visually important in distinguishing smiling and not smiling faces.
 \end{answerbox}
 
 
@@ -486,7 +500,18 @@ What, if any, are the limitations of the above method for computing accuracy and
 
 
 \begin{answerbox}{15em}
-Your Answer Here
+\begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    Model & Classification Accuracy \\ \hline
+    $alg\_1$ & 61.6\% \\
+    $alg\_2$ & 55.0\% \\
+    $alg\_3$ & 32.1\% \\
+    $alg\_4$ & 32.9\% \\
+    \hline
+    \end{tabular}
+\end{center}
+$alg\_1$ is clearly the best according to this metric. There are significantly more negative labels than positive labels in the dataset, and high accuracy can be misleading here. We can increase the accuracy score by increasing the threshold value.
 \end{answerbox}
 
 
@@ -504,7 +529,18 @@ Does the model with the best AUC also have the best accuracy? If not, why not?\\
 
 
 \begin{answerbox}{15em}
-Your Answer Here
+\begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    Model & AUC \\ \hline
+    $alg\_1$ & 67.990 \\
+    $alg\_2$ & 59.973 \\
+    $alg\_3$ & 20.113 \\
+    $alg\_4$ & 57.957 \\
+    \hline
+    \end{tabular}
+\end{center}
+$alg\_1$ has the best AUC score as well as the best classification accuracy.
 \end{answerbox}
 
 
@@ -523,7 +559,9 @@ Is there anything that can be done to improve the performance of \texttt{alg\_3}
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+\begin{center}
+    \includegraphics[]{results/roc-curves.png}
+\end{center}
 \end{answerbox}
 
 
