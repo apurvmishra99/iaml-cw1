@@ -48,7 +48,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %--------------------------------------------------------
 % IMPORTANT: Specify your Student ID below. You will need to uncomment the line, else compilation will fail. Make sure to specify your student ID correctly, otherwise we may not be able to identify your work and you will be marked as missing.
-\newcommand{\assignmentAuthorName}{s1864480}
+\newcommand{\assignmentAuthorName}{s1781963}
 %--------------------------------------------------------
 
 
@@ -81,7 +81,11 @@
 
 
 \begin{answerbox}{10em}
-There are $50$ observations in the dataset. The observations have two attributes, \textit{revision\_time} and \textit{exam\_score} and both these attributes are of type \textit{float64}. We observe that revision time ranges from a minimum of $2.723$ hrs to maximum of $48.011$ hrs, and the exam scores ranges from $14.731$ to $94.945$.
+The data set has 50 observations in total. It consists of two attributes revision\_time and exam\_score, both of type float64. 
+The revision\_time has a minimum of 2.723 hours and a maximum of 48.011 hours and the exam\_score has a minimum of 14.731 and a maximum of 94.945. 
+The average revision\_time of a student is 22.22002 hours and the average exam\_score is 49.91986.
+
+
 \end{answerbox}
 
 
@@ -103,7 +107,7 @@ For this part, you should use the sklearn implementation of \href{https://scikit
 
 
 \begin{answerbox}{10em}
-The estimate model parameters of \textbf{w} are $[17.89768026,  1.44114091]$. The first value $17.89768026$ represents the intercept of the fitted linear model. This is $\beta_{0}$ the constant in the fitted line equation. $1.44114091$ is $\beta_{1}$ the coefficient of $x$ which is also the slope of the fitted line.
+Your Answer Here
 \end{answerbox}
 
 
@@ -120,7 +124,7 @@ The estimate model parameters of \textbf{w} are $[17.89768026,  1.44114091]$. Th
 
 \begin{answerbox}{35em}
 \begin{center}
-\includegraphics[width=0.7\textwidth]{results/lin-reg-measured-vs-pred.png}
+\includegraphics[width=1\textwidth]{images/1c}
 \end{center}
 \end{answerbox}
 
@@ -140,8 +144,10 @@ It should only take a few lines (i.e. <5).\\
 
 
 \begin{answerbox}{20em}
-To estimate the parameters we use the formula $\beta = (X^{T}X)^{-1}X^{T}y$
 \begin{verbatim}
+y = dataset_q1.exam_score.values
+exam_scores = np.polyfit(dataset_q1["revision_time"].values, y, 1)
+np.polyval(exam_scores[::-1], [y])
 w = np.linalg.inv(X.transpose().dot(X)).dot(X.transpose()).dot(y)
 \end{verbatim}
 \end{answerbox}
@@ -161,9 +167,12 @@ Write out the expression for MSE and list one of its limitations. \\
 
 
 \begin{answerbox}{10em}
-$$MSE = \frac{1}{n}\sum_{t=1}^{n}(y_{i} - \hat{y_{i}})^2$$
+MSE = $\frac{1}{n}\sum_{t=1}^{n}(y_{i} - \hat{y_{i}})^2$
 
-Mean Squared Error is prone to outliers. When we calculate our mean there is a chance that it might be a very large value due to one large outlier. This can produce high errors.
+
+Mean Squared Error is prone to outliers because it uses mean in calculating the error value. 
+
+When calculating the mean value, there is a possibility that it might produce a very large value due to one large outlier which might lead to high errors.
 \end{answerbox}
 
 
@@ -182,7 +191,7 @@ Comment on any differences in their performance.
 
 
 \begin{answerbox}{10em}
-MSE of the sklearn model is $30.9854726145413$ , and of the closed form solution model is $30.98547261454129$. As we can see the difference is of the order $10^{-14}$ and hence completely negligible.
+MSE of the sklearn model is $30.9854726145413$, and of closed form solution model is $30.98547261454129$. The difference being in the magnitude of $10^{-14}$, is completely negligible.
 \end{answerbox}
 
 
@@ -202,11 +211,13 @@ Describe the resulting plot. Where is its minimum? Is this value to be expected?
 
 
 \begin{answerbox}{35em}
-\begin{center}
-\includegraphics[width=0.7\textwidth]{results/mse-vs-ws.png}
-\end{center}
-The plot is in the shape of an half-parabola, if we extend the x-axis we will see the full parabolic graph. The minima of the plot is at $w1 = 1.3535353535353538$. This can be explained by its closeness to the actual value of $\beta = 1.44114091$, which we found when we fitted our model. The slight discrepancy can be explained by choosing an non optimal value for $w0$ instead of $17.89768026$.
+CHANGE IT:(APURV)
 
+The plot is in the shape of an half-parabola, if we extend the x-axis we will see the full parabolic graph. The minima of the plot is at $w1 = 1.3535353535353538$. This can be explained by its closeness to the actual value of $\beta = 1.44114091$, which we found when we fitted our model. The slight discrepancy can be explained by choosing a non optimal value for $w0$ instead of $17.89768026$.
+
+\begin{center}
+\includegraphics[width=1\textwidth]{images/1g}
+\end{center}
 \end{answerbox}
 
 
@@ -246,7 +257,9 @@ Plot the resulting models on the same plot and also include the input data.\\
 
 
 \begin{answerbox}{35em}
-
+\begin{center}
+\includegraphics[width=1\textwidth]{images/2a}
+\end{center}
 \end{answerbox}
 
 
@@ -260,7 +273,10 @@ Plot the resulting models on the same plot and also include the input data.\\
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+The first bar is for M1, second for M2, third for M3 and the fourth for M4 as shown in the plot below:
+\begin{center}
+\includegraphics[width=1\textwidth]{images/2b}
+\end{center}
 \end{answerbox}
 
 
@@ -276,7 +292,7 @@ Based on these results, which model would you choose?}
 
 
 \begin{answerbox}{15em}
-Your Answer Here
+If we look at the bar plot in Q2(c), the $M=3$ and the $M=4$ models have the same performance. Their fit can be seen in the plot to produce the same outputs, and hence they have the same MSE. Thus, any of the two models can be chosen.
 \end{answerbox}
 
 
@@ -296,7 +312,12 @@ Comment on the impact of larger or smaller values of $\alpha$.
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+
+The following graph becomes smoother and more parabolic with larger values of alpha. Whereas, with smaller values of alpha, the graph becomes less smooth and less parabolic.
+
+\begin{center}
+\includegraphics[width=1\textwidth]{images/2d}
+\end{center}
 \end{answerbox}
 
 
@@ -333,7 +354,9 @@ Summarise the main properties of both the training and test splits.
 
 
 \begin{answerbox}{12em}
-Your Answer Here
+CHANGE IT:(APURV)
+
+The train dataset has 4800 observations, and the test dataset has 1200 observations. This a traditional 75\%-25\% split of the whole dataset to train the model. Each observation is composed of 68 (x, y) pairs of points.
 \end{answerbox}
 
 
@@ -353,7 +376,10 @@ Comment on any difference you notice between the two sets of points. \\
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+The main difference in the scatter plot is that in the smiling scatter plot, the face formed has its mouth open and lips raised. In other words, the points are scattered more as compared to the not smiling face. This also leads its chin to be slightly lower and eyes a bit more inclined compared to the not smiling plot.
+\begin{center}
+\includegraphics[width=1\textwidth]{images/3b}
+\end{center}
 \end{answerbox}
 
 
@@ -371,7 +397,8 @@ What is the advantage, if any, of using this measure compared to entropy?
 
 
 \begin{answerbox}{10em}
-Your Answer Here
+The default measure of the value of purity of DecisionTreeClassifier in sklearn is called the "Gini Index". The advantage of using "Gini Index" compared to entropy is that it is is easier to calculate and computationally less expensive.
+
 \end{answerbox}
 
 
@@ -388,7 +415,8 @@ What impact does smaller or larger values of this parameter have? Give one poten
 
 
 \begin{answerbox}{10em}
-Your Answer Here
+CHANGE IT:(APURV)
+The max\_depth parameter sets how deep the tree can grow and hence how complicated our model will be. Increasing the value of max\_depth means we have a higher training accuracy, however we have to be careful not to overfit on the training data. If the max\_depth is really high we observe our testing accuracy goes down. We need to find a sweet spot in between to have the best possible model. For small values we may not have enough distinguishing features to make an accurate model. For large values, the model becomes complicated and we will overfit on training data.
 \end{answerbox}
 
 
@@ -408,7 +436,13 @@ You can set the maximum depth of the decision tree using the \texttt{max\_depth}
 
 
 \begin{answerbox}{20em}
-Your Answer Here
+The training accuracy for maximum depth = 2 is 0.7947916666666667 and the test accuracy is 0.7816666666666666.
+
+The training accuracy for maximum depth = 8 is 0.9335416666666667 and the test accuracy is 0.8408333333333333.
+
+The training accuracy for maximum depth = 20 is 1.0 and the test accuracy is 0.815.
+
+The model with max\_depth=8 is the best amongst the 3. We have the highest test accuracy, and much lower complexity than the model with 20 layers.
 \end{answerbox}
 
 
@@ -426,7 +460,8 @@ Does the one with the highest importance make sense in the context of this class
 
 
 \begin{answerbox}{10em}
-Your Answer Here
+The three most important attributes in order of importance are are `x50, y48 and y29`.
+The one with the highest importance does make sense in the context of this classification task.
 \end{answerbox}
 
 
@@ -516,7 +551,9 @@ Is there anything that can be done to improve the performance of \texttt{alg\_3}
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+\begin{center}
+\includegraphics[width=1\textwidth]{images/4c}
+\end{center}
 \end{answerbox}
 
 
