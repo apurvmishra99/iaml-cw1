@@ -263,7 +263,7 @@ Plot the resulting models on the same plot and also include the input data.\\
 
 \begin{answerbox}{35em}
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{results/nonlinear-mse-bar.png}
+    \includegraphics[width=1\textwidth]{results/nonlinear-mse-bar.png}
 \end{center}
 \end{answerbox}
 
@@ -280,7 +280,7 @@ Based on these results, which model would you choose?}
 
 
 \begin{answerbox}{15em}
-Your Answer Here
+For $M=3$ and $M=4$ the models have the same performance.Their fit can be seen in the plot to produce the same outputs, and they have the same MSE. I would choose the model with $M=3$ as it will have lower number of features and will require lesser computational effort.
 \end{answerbox}
 
 
@@ -300,7 +300,10 @@ Comment on the impact of larger or smaller values of $\alpha$.
 
 
 \begin{answerbox}{35em}
-Your Answer Here
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{results/rbf-alpha-predictions.png}
+\end{center}
+The graph becomes smoother and more parabolic with larger values of alpha. At $\alpha = 1000$ the plot becomes indistinguishable from the plot of our polynomial regressor with $M=3$ or $M=4$. This means for higher $\alpha$ we get a much better fit and a more accurate model.
 \end{answerbox}
 
 
@@ -337,7 +340,7 @@ Summarise the main properties of both the training and test splits.
 
 
 \begin{answerbox}{12em}
-Your Answer Here
+The train dataset has 4800 observations, and the test dataset has 1200 observations. This a traditional $75\%-25\%$ split of the whole dataset to train the model. Each observation is composed of 68 (x, y) pairs of points. Therefore there are 
 \end{answerbox}
 
 
