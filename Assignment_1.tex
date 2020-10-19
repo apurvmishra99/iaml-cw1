@@ -303,7 +303,7 @@ Comment on the impact of larger or smaller values of $\alpha$.
 \begin{center}
     \includegraphics[width=0.9\textwidth]{results/rbf-alpha-predictions.png}
 \end{center}
-The graph becomes smoother and more parabolic with larger values of alpha. At $\alpha = 1000$ the plot becomes indistinguishable from the plot of our polynomial regressor with $M=3$ or $M=4$. This means for higher $\alpha$ we get a much better fit and a more accurate model.
+The graph becomes smoother and more parabolic with larger values of alpha. This happens because the transformed X tends to becomes an array of $[1 , [1], [1], [1]]$, as the value of $\alpha$ increases (\textit{rbf}'s exponential becomes 0). At $\alpha = 100$ the plot becomes indistinguishable from the plot of our polynomial regressor with $M=3$ or $M=4$, the best fit we found earlier. For values $ < 1 and > 0$ we get really small values close to zero and the graph becomes rugged and fluctuates a lot.
 \end{answerbox}
 
 
@@ -562,7 +562,7 @@ Is there anything that can be done to improve the performance of \texttt{alg\_3}
 \begin{center}
     \includegraphics[width=0.75\textwidth]{results/roc-curves.png}
 \end{center}    
-The flat line for $alg\_3$ at $y=0$ shows that this model is really bad at detecting True Positives. We know a random classifier has an AUC score of $0.5$, $alg\_3$'s score being lower than that shows there was some problem. To improve  the score we can just invert the model's outputs. While keeping the $0.5$ threshold if we invert the outputs we get an accuracy of $67.9\%$ and an AUC score of $79.887$.
+The flat line for $alg\_3$ at $y=0$ shows that this model is really bad at detecting True Positives. We know a random classifier has an AUC score of $0.5$, $alg\_3$'s score being lower than that shows there was some problem. To improve  the score we can just invert the model's outputs. If we subtract the model's outputs from 1 we get an AUC score of $0.936$, the best performance of any model we examined.
 \end{answerbox}
 
 
