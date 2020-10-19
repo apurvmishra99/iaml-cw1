@@ -120,7 +120,7 @@ The estimate model parameters of \textbf{w} are $[17.89768026,  1.44114091]$. Th
 
 \begin{answerbox}{35em}
 \begin{center}
-\includegraphics[width=0.7\textwidth]{results/lin-reg-measured-vs-pred.png}
+\includegraphics[width=0.9\textwidth]{results/lin-reg-pred-vs-input.png}
 \end{center}
 \end{answerbox}
 
@@ -161,7 +161,7 @@ Write out the expression for MSE and list one of its limitations. \\
 
 
 \begin{answerbox}{10em}
-$$MSE = \frac{1}{n}\sum_{t=1}^{n}(y_{i} - \hat{y_{i}})^2$$
+$$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_{i} - \hat{y_{i}})^2$$
 
 Mean Squared Error is prone to outliers. When we calculate our mean there is a chance that it might be a very large value due to one large outlier. This can produce high errors.
 \end{answerbox}
@@ -533,14 +533,14 @@ Does the model with the best AUC also have the best accuracy? If not, why not?\\
     \begin{tabular}{|c|c|}
     \hline
     Model & AUC \\ \hline
-    $alg\_1$ & 67.990 \\
-    $alg\_2$ & 59.973 \\
-    $alg\_3$ & 20.113 \\
-    $alg\_4$ & 57.957 \\
+    $alg\_1$ & 0.732 \\
+    $alg\_2$ & 0.632 \\
+    $alg\_3$ & 0.064 \\
+    $alg\_4$ & 0.847 \\
     \hline
     \end{tabular}
 \end{center}
-$alg\_1$ has the best AUC score as well as the best classification accuracy.
+$alg\_4$ has the best AUC score compared to $alg\_1$ which has the best classification accuracy. The AUC represents a metric which implies that for all values of a threshold, on average, some model A will be better than model B if its AUC score is higher. The database is highly class unbalanced so accuracy scores can be misleading indicators of performance. Here $alg\_4$ is a better model.
 \end{answerbox}
 
 
